@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+
+  "name": "Not-a-bot",
+  "description": "This is not a bot, trust me Dreamer! , Nothing suspicious here.",
+  "version": "1.0",
+
+
+  "content_scripts": [
+   {
+     "matches": ["https://blackdragon.mobi/units/*"],
+     "run_at": "document_end",
+     "js": ["attackHandler.js"]
+   },
+      {
+     "matches": ["https://blackdragon.mobi/battles/*"],
+     "run_at": "document_end",
+     "js": [ "contineHandler.js" , "attackHandler.js"]
+   },
+      {
+     "matches": ["https://blackdragon.mobi/maps*"],
+      "run_at": "document_end",    
+     "js": ["mapHandler.js"]
+   },
+      {
+     "matches":["https://blackdragon.mobi/buildings/view/building=calh/action=sell/all=1*"],
+    "js":["sellMarker.js"]
+      },
+      {
+     "matches":["https://blackdragon.mobi/buildings/view/building=calh/action=sell/confirm=0*"],
+    "js":["confirmSell.js"]
+      },
+       {
+     "matches":["https://blackdragon.mobi/index/warning/*"],
+    "js":["refresh.js"]
+      },
+      {
+           "matches":["https://blackdragon.mobi/buildings/view/building=calh/action=sell/confirm=1*"],
+    "js":["afterSell.js"]
+      }
+ ],
+  "permissions": [
+   "activeTab"
+   ]
+}
